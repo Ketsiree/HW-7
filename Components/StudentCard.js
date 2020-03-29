@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux';
-import { studentActions } from '../redux/store'
+import { studentActions } from '../src/Redux/store'
 import { bindActionCreators } from 'redux';
 
 const StudentCard = props => {
@@ -12,7 +12,7 @@ const StudentCard = props => {
         actions.deleteStudent(props.id)
     }
     const updateStudent = async () => {
-        const result = await axios.put(`http://localhost:8080/api/students/${props.id}`)
+        const result = await axios.put(`http://localhost:8080/api/students/${props.id}`,form)
         actions.updateStudent(props.id, form)
         
     }

@@ -8,11 +8,11 @@ const InputForm = props => {
     const dispatch = useDispatch();
 
     const form = useSelector(state => state.form)
-    const bears = useSelector(state => state.students)
+    const students = useSelector(state => state.students)
 
     const addStudent = async () => {
 
-        await axios.post(`http://localhost/api/students/`, form)
+        await axios.post(`http://localhost:8080/api/students/`, form)
 
         dispatch({
             type: 'ADD_STUDENT', student: {
@@ -35,7 +35,7 @@ const InputForm = props => {
                     <p>Image</p>
                             <input type="text" onChange={(e) => dispatch({ type: 'CHANGE_IMG', img: e.target.value })} /> <br />
 
-                            <button onClick={addBear}>CREATE</button>
+                            <button onClick={addStudent}>CREATE</button>
         </div>
     )
 }
