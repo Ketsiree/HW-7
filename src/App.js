@@ -1,25 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import StudentCard from './Components/StudentCard'
-import StudentList from './Components/StudentList'
-import InputForm from './Components/InputForm';
-import { useSelector, useDispatch } from 'react-redux';
-import { StudentActions } from './redux/store'
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react';       //import for react 
+import firebase from 'firebase/app';            //for firebase 
+import 'firebase/auth';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import './App.css';      // Styles for decorate you webpage    
 
-export default () => {
 
-  const actions = bindActionCreators(StudentActions, useDispatch());
-  useEffect(() => {
-    actions.getStudents()
-  }, [])
+const firebaseConfig = {              // Initialize Firebase
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};
 
-  return (
-    <div>
-      <h2>Students</h2>
-      <StudentList />
-      <InputForm />
-    </div>
-  )
+
+firebase.initializeApp(firebaseConfig);
+
+class SignInScreen extends Component {
+  render() {
+    return (
+      <div className="container">
+        <h1>FirebaseUI-React</h1>
+        <h1> with Firebase Authentication</h1>
+      </div>
+    );
+  }
 }
-//gg
+
+export default SignInScreen;
+
+
